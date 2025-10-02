@@ -22,16 +22,15 @@ export default function SummaryForm({ onNewSummary }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="form">
+    <form onSubmit={handleSubmit}>
       <textarea
         value={text}
         onChange={(e) => setText(e.target.value)}
-        placeholder="Text Edit"
+        placeholder="Paste text here..."
         rows={6}
-        style={{ width: "100%" }}
       />
-      <div>
-        <label>Style: </label>
+      <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.75rem" }}>
+        <label><strong>Style:</strong></label>
         <select value={style} onChange={(e) => setStyle(e.target.value)}>
           <option value="concise">Concise</option>
           <option value="detailed">Detailed</option>

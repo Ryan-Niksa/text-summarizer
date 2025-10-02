@@ -16,22 +16,21 @@ export default function SearchBar({ onSearch }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ marginBottom: "1rem" }}>
+    <form onSubmit={handleSubmit} style={{ display: "flex", gap: "0.5rem", marginBottom: "1rem" }}>
       <input
         type="text"
         value={q}
         placeholder="Search keyword..."
         onChange={(e) => setQ(e.target.value)}
-        style={{ marginRight: "0.5rem" }}
       />
-      <select value={style} onChange={(e) => setStyle(e.target.value)} style={{ marginRight: "0.5rem" }}>
+      <select value={style} onChange={(e) => setStyle(e.target.value)}>
         <option value="">All Styles</option>
         <option value="concise">Concise</option>
         <option value="detailed">Detailed</option>
         <option value="bullets">Bullets</option>
       </select>
       <button type="submit">Search</button>
-      <button type="button" onClick={handleReset} style={{ marginLeft: "0.5rem" }}>
+      <button type="button" className="secondary" onClick={handleReset}>
         Reset
       </button>
     </form>
