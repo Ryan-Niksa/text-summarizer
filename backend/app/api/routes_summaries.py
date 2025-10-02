@@ -15,9 +15,11 @@ def health():
 def get_summaries(
     limit: int = Query(50, ge=1, le=200),
     offset: int = Query(0, ge=0),
+    q: str | None = Query(None, description="Search keyword in original text or summary"),
+    style: str | None = Query(None, description="Filter by style: concise, detailed, bullets"),
     db: Session = Depends(get_db),
 ):
-    items, total = list_summaries(db, limit=limit, offset=offset)
+    items, total = list_summaries(db, q=q, style=style, limit=limit, offset=offset)
     return {"items": items, "total": total}
 
 @router.post("/summaries", response_model=SummaryOut)
