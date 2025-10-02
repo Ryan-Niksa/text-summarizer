@@ -22,10 +22,6 @@ def get_summaries(
 
 @router.post("/summaries", response_model=SummaryOut)
 def create_summary_from_text(payload: SummarizeIn, db: Session = Depends(get_db)):
-    """
-    Stage 1: use local heuristic for immediate usability.
-    Stage 2: swap to OpenAI (same interface).
-    """
     s = summarizer.summarize(payload.text, style=payload.style)
     row = create_summary(db, original_text=payload.text, summary=s, style=payload.style)
     return row
